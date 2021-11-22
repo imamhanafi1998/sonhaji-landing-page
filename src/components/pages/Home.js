@@ -44,16 +44,16 @@ const Home = () => {
   const [player, setPlayer] = useState({});
   const [token, setToken] = useState(null);
 
-  useEffect(() => {
+  useEffect(async () => {
     window.scrollTo(0, 0);
     setPL(true);
-    const x = async () => {
-      await getTokenFromApi();
+    await getTokenFromApi();
+    const x = () => {
       setInterval(async () => {
         getCurPlayer();
       }, 10000);
     };
-    x();
+    await x();
   }, []);
 
   const getTokenFromApi = async () => {
