@@ -80,7 +80,7 @@ const Home = () => {
     spotify.getMyCurrentPlayingTrack().then(
       function (data) {
         // console.log("User playlists", data);
-        if (data.item.artists) {
+        if (data.item.artists !== undefined) {
           let artists;
           data.item.artists.map((item, index) => {
             artists = index === 0 ? item.name : `${artists}, ${item.name}`;
@@ -148,7 +148,7 @@ const Home = () => {
               </Tooltip>
               {"."}
             </Text>
-            {player.title && (
+            {player.title !== undefined && (
               <Box w={isLarger ? "50%" : "100%"} py={2} mb={2} mt={-4}>
                 <Text mb={1}>I am currently listening to :</Text>
                 <Tooltip
