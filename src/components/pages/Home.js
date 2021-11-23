@@ -123,9 +123,8 @@ const Home = () => {
             flexDir="column"
             alignItems="flex-start"
             justifyContent="center"
-            // bg="red.100"
             mr={{ base: 0, lg: 4 }}
-            mb={{ base: 9, lg: 0 }}
+            mb={{ base: 9, lg: 6 }}
           >
             <Text fontSize="5xl" fontWeight="bold">
               Hello there, I am Imam Hanafi
@@ -150,7 +149,7 @@ const Home = () => {
               {"."}
             </Text>
             {player.title && (
-              <Box w={isLarger ? "50%" : "100%"} py={2} mb={5}>
+              <Box w={isLarger ? "50%" : "100%"} py={2} mb={2} mt={-4}>
                 <Text mb={1}>I am currently listening to :</Text>
                 <Flex
                   h="6rem"
@@ -211,7 +210,7 @@ const Home = () => {
               aria-label="Avatar"
               hasArrow
             >
-              {isLarger ? (
+              {false ? (
                 <Image
                   loading="lazy"
                   objectFit="cover"
