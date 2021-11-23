@@ -25,7 +25,7 @@ import {
 } from "@chakra-ui/react";
 import { Link as ReactLink } from "react-router-dom";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
-// import { GiSecretDoor } from "react-icons/gi";
+import { GiSecretDoor } from "react-icons/gi";
 
 import cat from "../images/cat.gif";
 import Avatar from "../images/avatar.png";
@@ -42,35 +42,40 @@ const Home = () => {
   const [pL, setPL] = useState(false);
   const [isLarger] = useMediaQuery("(min-width: 62em)");
   const [player, setPlayer] = useState({});
-  const [token, setToken] = useState(null);
 
-  useEffect(async () => {
+  useEffect(() => {
     window.scrollTo(0, 0);
     setPL(true);
-    await getTokenFromApi();
-    const x = () => {
-      setInterval(async () => {
-        getCurPlayer();
-      }, 10000);
-    };
-    await x();
+    x();
   }, []);
+
+  const x = async () => {
+    const token = await getTokenFromApi();
+    y(token);
+  };
+
+  const y = (token) => {
+    setInterval(async () => {
+      getCurPlayer(token);
+    }, 10000);
+  };
 
   const getTokenFromApi = async () => {
     try {
       const { data } = await axios.get(
         "https://spotify-token.netlify.app/.netlify/functions/api/token"
       );
-      console.log(data[0].token);
-      setToken(data[0].token);
+      // console.log(data[0].token);
+      // setToken(data[0].token);
+      return data[0].token;
     } catch (error) {
-      console.error(err);
+      console.error(error);
     }
   };
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const getCurPlayer = () => {
+  const getCurPlayer = (token) => {
     spotify.setAccessToken(token);
     spotify.getMyCurrentPlayingTrack().then(
       function (data) {
@@ -94,7 +99,7 @@ const Home = () => {
         }
       },
       function (err) {
-        console.error(err);
+        // console.error(err);
         setPlayer({});
       }
     );
@@ -190,14 +195,14 @@ const Home = () => {
                 contacts page
               </Link>
               {". "}
-              {/* <Icon
+              <Icon
                 color="gray.800"
                 h="30px"
                 w="30px"
                 as={GiSecretDoor}
                 _hover={{ color: "white", cursor: "pointer" }}
                 onClick={() => onOpen()}
-              /> */}
+              />
             </Text>
           </Flex>
           <Flex alignItems="center" justifyContent="center">
