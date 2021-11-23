@@ -151,33 +151,43 @@ const Home = () => {
             {player.title && (
               <Box w={isLarger ? "50%" : "100%"} py={2} mb={2} mt={-4}>
                 <Text mb={1}>I am currently listening to :</Text>
-                <Flex
-                  h="6rem"
-                  p={2}
-                  bg="gray.700"
-                  borderRadius="md"
-                  as={Link}
-                  onClick={() => window.open(player.external_urls)}
+                <Tooltip
+                  label={`Listen ${player.title} by ${player.artists} on Spotify`}
+                  aria-label="Avatar"
+                  hasArrow
+                  gutter={16}
+                  placement={isLarger ? "right" : "top-end"}
                 >
-                  <Image
-                    loading="lazy"
-                    // objectFit="cover"
-                    boxSize="5rem"
-                    src={player.albumImage}
-                    alt="Imam Hanafi's avatar"
-                  />
-                  <Box w="100%" mx="1rem">
-                    <Text noOfLines={1}>{player.title}</Text>
-                    <Text noOfLines={1}>{player.artists}</Text>
-                    <Progress
-                      mt={"1rem"}
-                      value={player.value}
-                      colorScheme="yellow"
-                      isAnimated={true}
-                      hasStripe={true}
+                  <Flex
+                    h="6rem"
+                    p={2}
+                    bg="gray.700"
+                    borderRadius="md"
+                    _hover={{ bg: "gray.700", cursor: "pointer" }}
+                    onClick={() => window.open(player.external_urls)}
+                  >
+                    <Image
+                      loading="lazy"
+                      // objectFit="cover"
+                      boxSize="5rem"
+                      src={player.albumImage}
+                      alt="Imam Hanafi's avatar"
                     />
-                  </Box>
-                </Flex>
+                    <Box w="100%" mx="1rem">
+                      <Text fontWeight="bold" noOfLines={1}>
+                        {player.title}
+                      </Text>
+                      <Text noOfLines={1}>{player.artists}</Text>
+                      <Progress
+                        mt={"1rem"}
+                        value={player.value}
+                        colorScheme="yellow"
+                        isAnimated={true}
+                        hasStripe={true}
+                      />
+                    </Box>
+                  </Flex>
+                </Tooltip>
               </Box>
             )}
 
