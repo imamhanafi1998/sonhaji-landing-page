@@ -153,8 +153,7 @@ const Home = () => {
                 <Text mb={1}>I am currently listening to :</Text>
                 <Tooltip
                   label={`Listen ${player.title} by ${player.artists} on Spotify`}
-                  aria-label="Avatar"
-                  hasArrow
+                  aria-label="Spotify"
                   gutter={16}
                   placement={isLarger ? "right" : "top-end"}
                 >
