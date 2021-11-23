@@ -162,7 +162,7 @@ const Home = () => {
                     p={2}
                     bg="gray.700"
                     borderRadius="md"
-                    _hover={{ bg: "gray.700", cursor: "pointer" }}
+                    _hover={{ bg: "gray.600", cursor: "pointer" }}
                     onClick={() => window.open(player.external_urls)}
                   >
                     <Image
