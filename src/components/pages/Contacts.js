@@ -99,11 +99,11 @@ const Contacts = () => {
                 <Icon mb="1" as={AiFillLinkedin} /> LinkedIn
                 {!isLarge ? <br /> : " - "}
                 <Link
-                  href="https://www.linkedin.com/in/imam-hanafi-b37513125/"
+                  href="https://www.linkedin.com/in/imam-hanafi/"
                   isExternal
                   color="yellow.400"
                 >
-                  linkedin.com/in/imam-hanafi-b37513125
+                  linkedin.com/in/imam-hanafi
                 </Link>
               </Text>
               <Text
