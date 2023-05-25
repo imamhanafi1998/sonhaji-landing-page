@@ -59,8 +59,8 @@ const Projects = () => {
               link="https://note-fe.vercel.app"
             />
             <ProjectCards
-              title="Forum Discussion For Information System"
-              tags="ReactJS, ExpressJS, MongoDB Atlas, Serverless, PWA, Push Notification"
+              title="Forum Discussion App"
+              tags="MERN, PWA, Push Notification"
               desc={`FD-SIFO is my final project website in order to obtain my S.Kom. title. Build using MongoDB Atlas as database, ExpressJS and NodeJS as backend, ReactJS (can be installed as PWA) as frontend and supports realtime push notification using OneSignal helper. Btw it tooks around 1 year to finish.`}
               image={FD_Sifo}
               link="https://fd-sifo.vercel.app"
