@@ -60,7 +60,7 @@ const Projects = () => {
             />
             <ProjectCards
               title="Forum Discussion App"
-              tags="MERN, Serverless, PWA,Push Notification"
+              tags="MERN, Serverless, PWA, Push Notification"
               desc={`FD-SIFO is my final project website in order to obtain my S.Kom. title. Build using MongoDB Atlas as database, ExpressJS and NodeJS as backend, ReactJS (can be installed as PWA) as frontend and supports realtime push notification using OneSignal helper. Btw it tooks around 1 year to finish.`}
               image={FD_Sifo}
               link="https://fd-sifo.vercel.app"
@@ -68,7 +68,7 @@ const Projects = () => {
             <ProjectCards
               title="Simple Card App"
               tags="ReactJS, ExpressJS, MongoDB Atlas, Serverless, React-Spring"
-              desc={`Simple Card App is customized CRUD MERN app with React-Spring built in my spare time. Build using MongoDB Atlas as database, ExpressJS and NodeJS as backend and ReactJS as frontend. This website stores some cards used for greeting peoples you loved one, or something else. It supports custom background, colour, text, highlight and many more.`}
+              desc={`Simple Card App is customized CRUD MERN app with React-Spring built in my spare time. Build using MongoDB Atlas as database, ExpressJS and NodeJS as backend and ReactJS as frontend. This website stores some cards used for greeting peoples you loved one, or something else. It supports custom background, color, text, highlight and many more.`}
               image={CardApp}
               link="https://card-from-imam-hanafi.vercel.app"
             />
