@@ -25,7 +25,7 @@ import { FaTelegramPlane, FaTwitter, FaLine } from "react-icons/fa";
 const Contacts = () => {
   const [pL, setPL] = useState(false);
   const [email, setEmail] = React.useState(
-    "17082010032@student.upnjatim.ac.id"
+    "h.imam1998@gmail.com"
   );
   const { hasCopied, onCopy } = useClipboard(email);
   const [isLarge] = useMediaQuery("(min-width: 480px)");
@@ -66,11 +66,11 @@ const Contacts = () => {
                 fontSize={{ base: "md", sm: "lg" }}
                 mb={!isLarge ? "3" : "0"}
               >
-                <Icon mb={1} as={AiFillMail} /> Mail (Edu)
+                <Icon mb={1} as={AiFillMail} /> Mail
                 {!isLarge ? <br /> : " - "}
                 <Tooltip
                   label="Click to copy email address"
-                  aria-label="Mail (Edu)"
+                  aria-label="Mail"
                   placement="bottom-end"
                 >
                   <Link color="yellow.400" onClick={() => emailClickHandler()}>
