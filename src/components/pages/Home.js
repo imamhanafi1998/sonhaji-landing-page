@@ -111,32 +111,37 @@ const Home = () => {
     // }
     // return;
 
-    const response = await fetch(TOKEN_ENDPOINT, {
-      method: "POST",
-      headers: {
-        Authorization: `Basic ${basic}`,
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: querystring.stringify({
-        grant_type: "refresh_token",
-        refresh_token: track.SPOTIFY_REFRESH_TOKEN,
-      }),
-    });
-
-    return response.json();
+    try {
+      const response = await fetch(TOKEN_ENDPOINT, {
+        method: "POST",
+        headers: {
+          Authorization: `Basic ${basic}`,
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: querystring.stringify({
+          grant_type: "refresh_token",
+          refresh_token: track.SPOTIFY_REFRESH_TOKEN,
+        }),
+      });
+      return response.json();    
+    } catch (e) {
+      console.error(e)
+      return {}
+    }
   };
 
   const getNowPlaying = async () => {
-    const { access_token } = await getAccessToken();
-
-    const response = await fetch(NOW_PLAYING_ENDPOINT, {
-      headers: {
-        Authorization: `Bearer ${access_token}`,
-      },
-    });
-
-    return response.json();
-
+    try {
+      const { access_token } = await getAccessToken();
+      const response = await fetch(NOW_PLAYING_ENDPOINT, {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      });
+      return response.json();
+    } catch (e) {
+      return {}
+    }
     // console.log(response.status);
   };
 
