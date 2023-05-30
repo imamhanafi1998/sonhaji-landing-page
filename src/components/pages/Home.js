@@ -51,7 +51,13 @@ const Home = () => {
     // getAccessToken();
     // getNowPlaying();
     // getPlayerInfo();
-    repeat();
+    let repeat = setInterval(async () => {
+      await getPlayerInfo();
+    }, 10000);
+    // console.log("abc");
+    return () => {
+      clearInterval(repeat);
+    };
     // console.log("aaaaaa");
   }, []);
 
