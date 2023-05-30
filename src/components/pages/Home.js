@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import axios from "axios";
 import qs from "qs";
+import querystring from "querystring";
 import {
   SlideFade,
   Box,
@@ -21,7 +22,7 @@ import {
   useDisclosure,
   useMediaQuery,
   Center,
-  Progress
+  Progress,
 } from "@chakra-ui/react";
 import { Link as ReactLink } from "react-router-dom";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
@@ -46,18 +47,153 @@ const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     setPL(true);
-    x();
+    // x();
+    // getAccessToken();
+    // getNowPlaying();
+    // getPlayerInfo();
+    repeat();
+    // console.log("aaaaaa");
   }, []);
 
-  const x = async () => {
-    const token = await getTokenFromApi();
-    y(token);
+  const repeat = async () => {
+    setInterval(() => {
+      getPlayerInfo();
+    }, 10000);
+  };
+
+  // const x = async () => {
+  //   const token = await getTokenFromApi();
+  //   y(token);
+  // };
+
+  const [track, setTrack] = useState({
+    SPOTIFY_CLIENT_ID: "c13e50cd23ec47d7945c7e8836a7758d",
+    SPOTIFY_CLIENT_SECRET: "08e9733750c5401ca34bdd32c349ff38",
+    SPOTIFY_REFRESH_TOKEN:
+      "AQCDCABqUw80_Hb0LTC5pPstsR-Ifi_e4mkFsi-CL1GEkRgC0NLJV2JOEWGt3YrbhfHrI0shRFKJKjRP7wXWTRnHGv0ufsl9OZM_uUhs1iTw6cVVwBXwJB-2cVovyjx5UMs",
+  });
+
+  const basic = Buffer.from(
+    `${track.SPOTIFY_CLIENT_ID}:${track.SPOTIFY_CLIENT_SECRET}`
+  ).toString("base64");
+  const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
+  const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
+
+  const getAccessToken = async () => {
+    // try {
+    //   const { data } = await axios.post(
+    //     TOKEN_ENDPOINT,
+    //     {},
+    //     {
+    //       headers: {
+    //         Authorization: `Basic ${basic}`,
+    //         "Content-Type": "application/x-www-form-urlencoded",
+    //       },
+    //       body: querystring.stringify({
+    //         grant_type: "refresh_token",
+    //         refresh_token: track.SPOTIFY_REFRESH_TOKEN,
+    //       }),
+    //     }
+    //   );
+    //   // console.log(data[0].token);
+    //   // setToken(data[0].token);
+    //   // return data[0].token;
+    //   console.log(data);
+    // } catch (error) {
+    //   console.error(error);
+    // }
+    // return;
+
+    const response = await fetch(TOKEN_ENDPOINT, {
+      method: "POST",
+      headers: {
+        Authorization: `Basic ${basic}`,
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: querystring.stringify({
+        grant_type: "refresh_token",
+        refresh_token: track.SPOTIFY_REFRESH_TOKEN,
+      }),
+    });
+
+    return response.json();
+  };
+
+  const getNowPlaying = async () => {
+    const { access_token } = await getAccessToken();
+
+    const response = await fetch(NOW_PLAYING_ENDPOINT, {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    });
+
+    return response.json();
+
+    // console.log(response.status);
+  };
+
+  const getPlayerInfo = async (_, res) => {
+    // const response = await getNowPlaying();
+    const response = await getNowPlaying();
+    console.log(response);
+    // const songData = response.json();
+    // // const status = response;
+    // // const data = response.json();
+    // console.log(response);
+    // console.log(response.json());
+    // return;
+
+    if (
+      response.hasOwnProperty("currently_playing_type") ||
+      response.currently_playing_type === "track"
+    ) {
+      console.log("benar");
+      const player = {
+        isPlaying: response.is_playing,
+        title: response.item.name,
+        album: response.item.album.name,
+        artist: response.item.album.artists
+          .map((artist) => artist.name)
+          .join(", "),
+        albumImageUrl: response.item.album.images[0].url,
+        songUrl: response.item.external_urls.spotify,
+        progress: (response.progress_ms / response.item.duration_ms) * 100,
+      };
+      console.log(player);
+      setPlayer(player);
+    } else {
+      console.log("salah");
+      setPlayer({});
+    }
+    // return;
+
+    // if (
+    //   // response.status === 204 ||
+    //   // response.status > 400 ||
+    //   response.currently_playing_type !== "track"
+    // ) {
+    //   return res.status(200).json({ isPlaying: false });
+    // }
+
+    // const dataPlayer = {
+    //   isPlaying: response.data.is_playing,
+    //   title: response.data.item.name,
+    //   album: response.data.item.album.name,
+    //   artist: response.data.item.album.artists
+    //     .map((artist) => artist.name)
+    //     .join(", "),
+    //   albumImageUrl: response.data.item.album.images[0].url,
+    //   songUrl: response.data.item.external_urls.spotify,
+    // };
+
+    // res.status(200).json(dataPlayer);
   };
 
   const y = (token) => {
-    setInterval(async () => {
-      getCurPlayer(token);
-    }, 10000);
+    // setInterval(async () => {
+    //   getCurPlayer(token);
+    // }, 10000);
   };
 
   const getTokenFromApi = async () => {
@@ -92,7 +228,7 @@ const Home = () => {
             progressMs: data.progress_ms,
             duration_ms: data.item.duration_ms,
             value: (data.progress_ms / data.item.duration_ms) * 100,
-            external_urls: data.item.external_urls.spotify
+            external_urls: data.item.external_urls.spotify,
           });
         } else {
           setPlayer({});
@@ -152,7 +288,7 @@ const Home = () => {
               <Box w={isLarger ? "50%" : "100%"} py={2} mb={2} mt={-4}>
                 <Text mb={1}>I am currently listening to :</Text>
                 <Tooltip
-                  label={`Listen ${player.title} by ${player.artists} on Spotify`}
+                  label={`Listen ${player.title} by ${player.artist} on Spotify`}
                   aria-label="Spotify"
                   gutter={16}
                   placement={isLarger ? "right" : "top-end"}
@@ -163,23 +299,23 @@ const Home = () => {
                     bg="gray.700"
                     borderRadius="md"
                     _hover={{ bg: "gray.600", cursor: "pointer" }}
-                    onClick={() => window.open(player.external_urls)}
+                    onClick={() => window.open(player.songUrl)}
                   >
                     <Image
                       loading="lazy"
                       // objectFit="cover"
                       boxSize="5rem"
-                      src={player.albumImage}
+                      src={player.albumImageUrl}
                       alt="Imam Hanafi's avatar"
                     />
                     <Box w="100%" mx="1rem">
                       <Text fontWeight="bold" noOfLines={1}>
                         {player.title}
                       </Text>
-                      <Text noOfLines={1}>{player.artists}</Text>
+                      <Text noOfLines={1}>{player.artist}</Text>
                       <Progress
                         mt={"1rem"}
-                        value={player.value}
+                        value={player.progress}
                         colorScheme="yellow"
                         isAnimated={true}
                         hasStripe={true}
