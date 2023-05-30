@@ -77,7 +77,7 @@ const Home = () => {
     SPOTIFY_CLIENT_ID: "c13e50cd23ec47d7945c7e8836a7758d",
     SPOTIFY_CLIENT_SECRET: "08e9733750c5401ca34bdd32c349ff38",
     SPOTIFY_REFRESH_TOKEN:
-      "AQCDCABqUw80_Hb0LTC5pPstsR-Ifi_e4mkFsi-CL1GEkRgC0NLJV2JOEWGt3YrbhfHrI0shRFKJKjRP7wXWTRnHGv0ufsl9OZM_uUhs1iTw6cVVwBXwJB-2cVovyjx5UMs",
+      "AQAkUe1--68_MPonGM-sFhSf5ZZ5hgDD6bWIzUCDYIGZFR007SpX-Fm2qVcfTfIaElDLVjWc1WH8kjvVtHQWo14tlNSrsw2IqGnrcQH6_FOWk3ja02ozA8Lf0YibgdFvN7Q",
   });
 
   const basic = Buffer.from(
@@ -112,35 +112,56 @@ const Home = () => {
     // return;
 
     try {
-      const response = await fetch(TOKEN_ENDPOINT, {
-        method: "POST",
-        headers: {
-          Authorization: `Basic ${basic}`,
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: querystring.stringify({
-          grant_type: "refresh_token",
-          refresh_token: track.SPOTIFY_REFRESH_TOKEN,
-        }),
-      });
-      return response.json();    
+      const params = new URLSearchParams();
+      params.append("grant_type", "refresh_token");
+      params.append("refresh_token", track.SPOTIFY_REFRESH_TOKEN);
+      // let bodyFormData = new FormData();
+      // bodyFormData.append("grant_type", "refresh_token");
+      // bodyFormData.append("refresh_token", track.SPOTIFY_REFRESH_TOKEN);
+      // console.log(bodyFormData);
+      axios.defaults.headers = {
+        Authorization: `Basic ${basic}`,
+        "Content-Type": "application/x-www-form-urlencoded",
+      };
+      // const response = await axios.post(TOKEN_ENDPOINT, bodyFormData);
+      const response = await axios.post(TOKEN_ENDPOINT, params);
+      console.log(response);
+      return response.data;
+      // const response = await fetch(TOKEN_ENDPOINT, {
+      //   method: "POST",
+      //   headers: {
+      //     Authorization: `Basic ${basic}`,
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //   },
+      //   body: querystring.stringify({
+      //     grant_type: "refresh_token",
+      //     refresh_token: track.SPOTIFY_REFRESH_TOKEN,
+      //   }),
+      // });
+      // return response.json();
     } catch (e) {
-      console.error(e)
-      return {}
+      console.error(e);
+      return {};
     }
   };
 
   const getNowPlaying = async () => {
     try {
       const { access_token } = await getAccessToken();
-      const response = await fetch(NOW_PLAYING_ENDPOINT, {
-        headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
-      });
-      return response.json();
+      axios.defaults.headers = {
+        Authorization: `Bearer ${access_token}`,
+      };
+      // const response = await fetch(NOW_PLAYING_ENDPOINT, {
+      //   headers: {
+      //     Authorization: `Bearer ${access_token}`,
+      //   },
+      // });
+      const response = await axios.get(NOW_PLAYING_ENDPOINT);
+      // console.log(response);
+      // return response.json();
+      return response.data;
     } catch (e) {
-      return {}
+      return {};
     }
     // console.log(response.status);
   };
@@ -148,7 +169,7 @@ const Home = () => {
   const getPlayerInfo = async (_, res) => {
     // const response = await getNowPlaying();
     const response = await getNowPlaying();
-    console.log(response);
+    // console.log(response);
     // const songData = response.json();
     // // const status = response;
     // // const data = response.json();
@@ -156,11 +177,8 @@ const Home = () => {
     // console.log(response.json());
     // return;
 
-    if (
-      response.hasOwnProperty("currently_playing_type")
-    ) {
-      if (response.currently_playing_type === "track")
-      {
+    if (response.hasOwnProperty("currently_playing_type")) {
+      if (response.currently_playing_type === "track") {
         console.log("benar");
         const player = {
           isPlaying: response.is_playing,
