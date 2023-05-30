@@ -152,23 +152,28 @@ const Home = () => {
     // return;
 
     if (
-      response.hasOwnProperty("currently_playing_type") ||
-      response.currently_playing_type === "track"
+      response.hasOwnProperty("currently_playing_type")
     ) {
-      console.log("benar");
-      const player = {
-        isPlaying: response.is_playing,
-        title: response.item.name,
-        album: response.item.album.name,
-        artist: response.item.album.artists
-          .map((artist) => artist.name)
-          .join(", "),
-        albumImageUrl: response.item.album.images[0].url,
-        songUrl: response.item.external_urls.spotify,
-        progress: (response.progress_ms / response.item.duration_ms) * 100,
-      };
-      console.log(player);
-      setPlayer(player);
+      if (response.currently_playing_type === "track")
+      {
+        console.log("benar");
+        const player = {
+          isPlaying: response.is_playing,
+          title: response.item.name,
+          album: response.item.album.name,
+          artist: response.item.album.artists
+            .map((artist) => artist.name)
+            .join(", "),
+          albumImageUrl: response.item.album.images[0].url,
+          songUrl: response.item.external_urls.spotify,
+          progress: (response.progress_ms / response.item.duration_ms) * 100,
+        };
+        console.log(player);
+        setPlayer(player);
+      } else {
+        console.log("salah");
+        setPlayer({});
+      }
     } else {
       console.log("salah");
       setPlayer({});
