@@ -44,16 +44,17 @@ const Home = () => {
   const [isLarger] = useMediaQuery("(min-width: 62em)");
   const [player, setPlayer] = useState({});
 
-  useEffect(() => {
+  useEffect(async () => {
     window.scrollTo(0, 0);
     setPL(true);
     // x();
     // getAccessToken();
     // getNowPlaying();
     // getPlayerInfo();
+    await getPlayerInfo();
     let repeat = setInterval(async () => {
       await getPlayerInfo();
-    }, 10000);
+    }, 6000);
     // console.log("abc");
     return () => {
       clearInterval(repeat);
