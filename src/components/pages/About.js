@@ -210,6 +210,7 @@ const About = () => {
                   Tools
                 </Text>
                 <List>
+                  <Text fontSize="lg">VS Code</Text>
                   <Text fontSize="lg">Atom</Text>
                   <Text fontSize="lg">Insomnia</Text>
                   <Text fontSize="lg">CodeSandbox</Text>
