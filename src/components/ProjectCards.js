@@ -84,11 +84,20 @@ const ProjectCards = ({ title, tags, desc, image, link, clickEvent }) => {
           </ModalBody>
 
           <ModalFooter>
+            <Button
+              onClick={() => window.open(`${image}`, "_blank")}
+              variant="solid"
+              color="yellow.400"
+              rightIcon={<ArrowForwardIcon />}
+            >
+              View screenshot
+            </Button>
             {link && (
               <Button
                 onClick={() => window.open(`${link}`, "_blank")}
                 variant="solid"
                 color="yellow.400"
+                ml={4}
                 rightIcon={<ArrowForwardIcon />}
               >
                 Visit demo
