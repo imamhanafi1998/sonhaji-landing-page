@@ -57,7 +57,7 @@ const About = () => {
                 >
                   Surabaya, Indonesia
                 </Link>
-                . Currently studying on{" "}
+                . Studied on{" "}
                 <Link
                   href="http://sisfo.upnjatim.ac.id/"
                   isExternal
@@ -73,7 +73,7 @@ const About = () => {
                 >
                   UPN "VETERAN" Jawa Timur
                 </Link>
-                .
+                {" "}and now currently working as Fullstack Dev.
               </Text>
               <Text fontSize="lg" align="left">
                 I'm interested in developing modern web, especially on MERN
