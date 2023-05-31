@@ -306,8 +306,8 @@ const Home = () => {
               <Link as={ReactLink} to="/projects" color="yellow.400">
                 some projects
               </Link>{" "}
-              in the past until now. Ex vice president on internal university
-              named{" "}
+              in the past until now. The ex-vice president of the internal 
+              learning community in the Information System Department named{" "}
               <Tooltip
                 placement="bottom-start"
                 label="Information System Community"
@@ -369,7 +369,7 @@ const Home = () => {
               .
             </Text>
             <Text fontSize="xl" align="left">
-              Or ask anything else? Get in touch with me on{" "}
+              Or ask anything else? Get in touch with me on the{" "}
               <Link as={ReactLink} to="/contacts" color="yellow.400">
                 contacts page
               </Link>
