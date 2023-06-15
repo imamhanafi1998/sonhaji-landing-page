@@ -77,7 +77,7 @@ const About = () => {
               </Text>
               <Text fontSize="lg" align="left">
                 I'm interested in developing modern web, especially on MERN
-                stack. So I decided to learn it slowly, part by part, starts
+                stack. So I decided to learn it slowly, parts by parts, starts
                 with{" "}
                 <Link href="https://reactjs.org" isExternal color="yellow.400">
                   ReactJS
