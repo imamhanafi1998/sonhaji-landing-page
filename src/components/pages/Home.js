@@ -31,6 +31,9 @@ import { GiSecretDoor } from "react-icons/gi";
 import cat from "../images/cat.gif";
 import Avatar from "../images/avatar.png";
 import AvatarMasked from "../images/avatarMasked.png";
+// import avatarWMusic from "src/components/images/avatarWMusic.gif";
+// const avatarWMusic = require("src/components/images/avatarWMusic.gif");
+const AvatarWMusic = "https://i.imgur.com/6wY4xkg.gif";
 import MamentApp from "../images/mament.png";
 import Sigud from "../images/sigud.png";
 
@@ -306,7 +309,7 @@ const Home = () => {
               <Link as={ReactLink} to="/projects" color="yellow.400">
                 some projects
               </Link>{" "}
-              in the past until now. The ex-vice president of the internal 
+              in the past until now. The ex-vice president of the internal
               learning community in the Information System Department named{" "}
               <Tooltip
                 placement="bottom-start"
@@ -403,7 +406,7 @@ const Home = () => {
                   loading="lazy"
                   borderRadius="full"
                   maxW={{ base: "2xs", sm: "xs" }}
-                  src={AvatarMasked}
+                  src={player.title !== undefined ? AvatarWMusic : AvatarMasked}
                   alt="Imam Hanafi's avatar"
                 />
               )}
