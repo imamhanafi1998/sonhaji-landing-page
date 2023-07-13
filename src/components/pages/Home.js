@@ -33,7 +33,8 @@ import Avatar from "../images/avatar.png";
 import AvatarMasked from "../images/avatarMasked.png";
 // import avatarWMusic from "src/components/images/avatarWMusic.gif";
 // const avatarWMusic = require("src/components/images/avatarWMusic.gif");
-const AvatarWMusic = "https://i.imgur.com/6wY4xkg.gif";
+// const AvatarWMusic = "https://i.imgur.com/6wY4xkg.gif";
+import AvatarWMusic from "../images/avatarWMusic.gif";
 import MamentApp from "../images/mament.png";
 import Sigud from "../images/sigud.png";
 
