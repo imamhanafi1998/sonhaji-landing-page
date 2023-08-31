@@ -69,7 +69,7 @@ const Projects = () => {
               tags="ReactJS, ExpressJS, MongoDB Atlas, Serverless, React-Spring"
               desc={`Simple Card App is customized CRUD MERN app with React-Spring built in my spare time. Built using MongoDB Atlas as database, ExpressJS and NodeJS as backend and ReactJS as frontend. This website stores some cards used for greeting peoples you loved one, or something else. It supports custom background, color, text, highlight and many more.`}
               image={CardApp}
-              link="https://card-from-imam-hanafi.vercel.app"
+              link="https://card-from-imamhanafi.vercel.app"
             />
           </SimpleGrid>
         </Box>
