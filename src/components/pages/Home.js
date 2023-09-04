@@ -312,7 +312,7 @@ const Home = () => {
               <Link as={ReactLink} to="/projects" color="yellow.400">
                 some projects
               </Link>{" "}
-              in the past until now. The ex-vice president of the internal
+              in the past until now. The ex-vice chairperson of the internal
               learning community in the Information System Department named{" "}
               <Tooltip
                 placement="bottom-start"
