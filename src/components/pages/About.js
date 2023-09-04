@@ -49,7 +49,7 @@ const About = () => {
                 I am Imam Hanafi
               </Text>
               <Text fontSize="lg" align="left" my="6">
-                Lived in{" "}
+                Lives in{" "}
                 <Link
                   href="https://surabaya.go.id/"
                   isExternal
@@ -57,13 +57,13 @@ const About = () => {
                 >
                   Surabaya, Indonesia
                 </Link>
-                . Studied on{" "}
+                . Studied{" "}
                 <Link
                   href="http://sisfo.upnjatim.ac.id/"
                   isExternal
                   color="yellow.400"
                 >
-                  Information System
+                  Information Systems
                 </Link>{" "}
                 at{" "}
                 <Link
@@ -71,22 +71,21 @@ const About = () => {
                   isExternal
                   color="yellow.400"
                 >
-                  UPN "VETERAN" Jawa Timur
+                  UPN "Veteran" Jawa Timur
                 </Link>
-                {" "}and now currently working as Fullstack Dev.
+                {" "}and currently working as Full-Stack Dev.
               </Text>
               <Text fontSize="lg" align="left">
-                I'm interested in developing modern web, especially on MERN
-                stack. So I decided to learn it slowly, parts by parts, starts
-                with{" "}
+                I'm interested in modern web development, 
+                especially on the MERN stack. So I decided to learn it slowly, 
+                piece by piece, starting with{" "}
                 <Link href="https://reactjs.org" isExternal color="yellow.400">
                   ReactJS
                 </Link>{" "}
-                as this website made with.
+                as this website was made with.
               </Text>
               <Text fontSize="lg" align="left" my={6}>
-                In a "real-life", I play mobile games or some old video games on
-                my Laptop, visiting{" "}
+                In real life I play mobile games or some old video games on my laptop, visit{" "}
                 <Tooltip
                   placement="bottom-start"
                   label="Indonesian Meme Site"
@@ -96,39 +95,25 @@ const About = () => {
                     1CAK
                   </Link>
                 </Tooltip>{" "}
-                and watching{" "}
+                and watch{" "}
                 <Link href="https://youtube.com" isExternal color="yellow.400">
                   YouTube
                 </Link>{" "}
                 too.
               </Text>
               <Text fontSize="lg" align="left">
-                For somehow, my close friends call me{" "}
+                Somehow my close friends call me{" "}
                 <Link
                   as={ReactLink}
                   to="/about"
                   color="yellow.400"
                   fontWeight="bold"
                 >
-                  SONHAJI
+                  Sonhaji
                 </Link>{" "}
-                and I like it. I do like to share some of my personal
-                experiences to them, such as academics, loves, films, video
-                games and many more. Sometimes I write it on{" "}
-                <Tooltip
-                  placement="bottom-start"
-                  label="myth_hanafi"
-                  aria-label="Instagram"
-                >
-                  <Link
-                    href="https://instagram.com/myth_hanafi"
-                    isExternal
-                    color="yellow.400"
-                  >
-                    my Instagram
-                  </Link>
-                </Tooltip>
-                . Because with writing, it can speak whatever I can not.
+                and I like that. I like to share some of my personal experiences with them like academics, 
+                love, movies, video games and many more. 
+                Sometimes I write them on my Instagram. Because writing can speak what I cannot.
               </Text>
             </Flex>
             <Tooltip label="It's me too xD" aria-label="Profile Photo">
