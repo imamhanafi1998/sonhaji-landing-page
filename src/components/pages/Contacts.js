@@ -147,20 +147,6 @@ const Contacts = () => {
                   instagram.com/myth_hanafi/
                 </Link>
               </Text>
-              <Text
-                fontSize={{ base: "md", sm: "lg" }}
-                mb={!isLarge ? "3" : "0"}
-              >
-                <Icon mb="1" as={FaTwitter} /> Twitter
-                {!isLarge ? <br /> : " - "}
-                <Link
-                  href="https://twitter.com/imamh_147"
-                  isExternal
-                  color="yellow.400"
-                >
-                  twitter.com/imamh_147
-                </Link>
-              </Text>
             </List>
           </Box>
         </Box>
