@@ -133,20 +133,6 @@ const Contacts = () => {
                   line.me/ti/p/~h.imam1998
                 </Link>
               </Text>
-              <Text
-                fontSize={{ base: "md", sm: "lg" }}
-                mb={!isLarge ? "3" : "0"}
-              >
-                <Icon mb="1" as={AiOutlineInstagram} /> Instagram
-                {!isLarge ? <br /> : " - "}
-                <Link
-                  href="https://instagram.com/myth_hanafi/"
-                  isExternal
-                  color="yellow.400"
-                >
-                  instagram.com/myth_hanafi/
-                </Link>
-              </Text>
             </List>
           </Box>
         </Box>
