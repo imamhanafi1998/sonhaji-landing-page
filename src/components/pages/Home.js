@@ -307,7 +307,7 @@ const Home = () => {
               Hello there, I am Imam Hanafi
             </Text>
             <Text fontSize="xl" align="left" my="6">
-              You can call me Imam. I am Software Engineer, especially on Web
+              You can call me Imam. I am a Software Engineer, especially on Web
               things. Doing{" "}
               <Link as={ReactLink} to="/projects" color="yellow.400">
                 some projects
@@ -430,14 +430,14 @@ const Home = () => {
             <ProjectCards
               title="Forum Discussion App"
               tags="MERN, Serverless, PWA, Push Notification"
-              desc={`FD-SIFO is my final project website in order to obtain my S.Kom. title. Built using MongoDB Atlas as database, ExpressJS and NodeJS as backend, ReactJS (can be installed as PWA) as frontend and supports realtime push notification using OneSignal helper. Btw it tooks around 1 year to finish.`}
+              desc={`FD-SIFO is my final project website in order to obtain my S.Kom. title. Built using MongoDB Atlas as database, ExpressJS and NodeJS as backend, ReactJS (can be installed as PWA) as frontend and supports real-time push notification using OneSignal helper. It took around 1 year to finish.`}
               image={FD_Sifo}
               link="https://fd-sifo.vercel.app"
             />
             <ProjectCards
               title="Simple Card App"
               tags="ReactJS, ExpressJS, MongoDB Atlas, Serverless, React-Spring"
-              desc={`Simple Card App is customized CRUD MERN app with React-Spring built in my spare time. Built using MongoDB Atlas as database, ExpressJS and NodeJS as backend and ReactJS as frontend. This website stores some cards used for greeting peoples you loved one, or something else. It supports custom background, color, text, highlight and many more.`}
+              desc={`Simple Card App is a custom CRUD MERN app built with React-Spring in my spare time. Built using MongoDB Atlas as database, ExpressJS and NodeJS as backend, and ReactJS as frontend. This website stores some cards used for greeting people, your loved ones, or something else. It supports custom background, color, text, highlight and many more.`}
               image={CardApp}
               link="https://card-from-imamhanafi.vercel.app"
             />
