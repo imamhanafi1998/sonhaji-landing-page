@@ -66,6 +66,20 @@ const Contacts = () => {
                 fontSize={{ base: "md", sm: "lg" }}
                 mb={!isLarge ? "3" : "0"}
               >
+                <Icon mb="1" as={AiFillLinkedin} /> LinkedIn
+                {!isLarge ? <br /> : " - "}
+                <Link
+                  href="https://www.linkedin.com/in/imam-hanafi/"
+                  isExternal
+                  color="yellow.400"
+                >
+                  linkedin.com/in/imam-hanafi
+                </Link>
+              </Text>
+              <Text
+                fontSize={{ base: "md", sm: "lg" }}
+                mb={!isLarge ? "3" : "0"}
+              >
                 <Icon mb={1} as={AiFillMail} /> Mail
                 {!isLarge ? <br /> : " - "}
                 <Tooltip
@@ -90,20 +104,6 @@ const Contacts = () => {
                   color="yellow.400"
                 >
                   github.com/imamhanafi1998
-                </Link>
-              </Text>
-              <Text
-                fontSize={{ base: "md", sm: "lg" }}
-                mb={!isLarge ? "3" : "0"}
-              >
-                <Icon mb="1" as={AiFillLinkedin} /> LinkedIn
-                {!isLarge ? <br /> : " - "}
-                <Link
-                  href="https://www.linkedin.com/in/imam-hanafi/"
-                  isExternal
-                  color="yellow.400"
-                >
-                  linkedin.com/in/imam-hanafi
                 </Link>
               </Text>
               <Text
