@@ -80,22 +80,6 @@ const Contacts = () => {
                 fontSize={{ base: "md", sm: "lg" }}
                 mb={!isLarge ? "3" : "0"}
               >
-                <Icon mb={1} as={AiFillMail} /> Mail
-                {!isLarge ? <br /> : " - "}
-                <Tooltip
-                  label="Click to copy email address"
-                  aria-label="Mail"
-                  placement="bottom-end"
-                >
-                  <Link color="yellow.400" onClick={() => emailClickHandler()}>
-                    {email}
-                  </Link>
-                </Tooltip>
-              </Text>
-              <Text
-                fontSize={{ base: "md", sm: "lg" }}
-                mb={!isLarge ? "3" : "0"}
-              >
                 <Icon mb="1" as={AiFillGithub} /> GitHub
                 {!isLarge ? <br /> : " - "}
                 <Link
